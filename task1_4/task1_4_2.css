@@ -1,0 +1,38 @@
+body{
+	padding:0px;
+	margin:0px;
+}
+.content{
+	position: relative;
+	top:50%;
+	left:50%;
+	width:400px;
+	background-color: #ccc;
+	transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	-o-transform:translate(-50%,-50%);
+   /*  另外一种
+     left:0; //不用设置；
+     margin:0 auto;
+     transform: translateY(-50%);*/
+}
+.left_top,.right_bottom{
+	height:50px;
+	width:50px;
+    background-color: #fc0;
+}
+.left_top {
+	border-bottom-right-radius:50px;
+	-webkit-border-bottom-right-radius:50px;
+    -moz-border-bottom-right-radius:50px;
+}
+.right_bottom{
+	position:absolute;
+	right:0px;
+	bottom:0px; 
+	border-top-left-radius: 50px;
+	-moz-border-top-left-radius:50px;
+	-webkit-border-top-left-radius:50px;
+}

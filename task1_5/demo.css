@@ -1,0 +1,87 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+a{
+	text-decoration: none;
+}
+
+.body{
+	background-color:  #DEDEDE;
+	font-family: "Microsoft Yahei";
+	font-size:12px;
+}
+.header,.footer{
+	width:1075px;
+	height:50px;
+	background-color: #333;
+	padding:10px;
+	font-size:15px;
+}
+
+.header img ,.header ul{
+	display: inline-block;
+}
+.header img{
+	width:100px;
+	height:50px;
+	margin-left:20px;
+}
+.header ul{
+	float:right;
+	height:50px;
+    width:360px;
+    list-style-type:disc;
+}
+.header ul li{
+	float:left;
+	width:80px;
+	height:20px;
+	padding:15px 0;
+}
+.header ul li a{
+	color:#fff;
+}
+.footer{
+	text-align: center;
+}
+.content{
+	width:100%;
+	position: relative;
+}
+.main{
+	margin:20px 340px 20px 20px;
+	padding:20px;
+	background-color: #fff;
+	border:1px solid  #DEDEDE;
+	min-width: 200px;
+	overflow: hidden;
+}
+.sidebar {
+	float:right;
+	width:300px;
+	height:500px;
+	background-color: #fff;
+	border:1px solid  #DEDEDE;
+}
+.sidebar span{
+	display: inline-block;
+	width:100px;
+	font-size: 12px;
+	text-align: right;
+}
+.main .pic{
+	width:100px;
+	height:100px;
+	margin-bottom: 10px;
+	/*display:inline-block;*/
+	float:left;
+	overflow: hidden;
+}
+.main .pic img{
+	width:80px;
+	height:80px;
+}
+.main .pic p{
+	font-size:12px;
+}
