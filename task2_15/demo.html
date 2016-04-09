@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<title>零基础JavaScript编码</title>
+  </head>
+  <body>
+     <ul id="source">
+       <li>北京空气质量：<b>90</b></li>
+       <li>上海空气质量：<b>70</b></li>
+       <li>天津空气质量：<b>80</b></li>
+       <li>广州空气质量：<b>50</b></li>
+       <li>深圳空气质量：<b>40</b></li>
+       <li>福州空气质量：<b>32</b></li>
+       <li>成都空气质量：<b>90</b></li>
+     </ul>
+     <ul id="resort">
+    
+     </ul>
+     <button id="sort_btn">排序</button>
+     
+     <script type="text/javascript">
+       function getData(){
+       	 //从source中获取数据，保存在data数组中；
+          var data,lis,i;
+          data=[];
+          lis = document.getElementById('source').getElementsByTagName("li");
+          for(i=0;i<lis.length;i++){
+               var value = lis[i].getElementsByTagName("b")[0].innerText;
+               var city = lis[i].innerText.match(/(.*)空气/)[1];
+               // var city = lis[i].innerText.split(/空气质量: /g);
+               data[i] = [];
+               data[i][0] = city;
+               data[i][1] = value;
+          }
+       	  return data;
+       }
+
+       function sortData(data){
+       	//对data中的数据进行排序；
+         data.sort(function(a,b){
+         	 return b[1]-a[1] ;
+         })
+       }
+
+       function render(data){
+       	//将排好序的城市及空气质量指数输出到ul中；
+       	 var frag = document.createDocumentFragment();
+       	 data.forEach(function(cur,index){
+           var li = document.createElement("li");
+           var text = document.createTextNode("第" + (index+1) +"名" + cur[0] + "空气质量指数：" + cur[1]);
+           li.appendChild(text);
+           frag.appendChild(li);
+       	 })
+       	   document.getElementById("resort").appendChild(frag);
+       }
+
+       function btnHandle(){
+       	 //点击sort-btn，执行getData,sortData,render;
+       	  var d = getData();
+       	  sortData(d);
+       	  render(d);
+       }
+
+       function init(){
+       	  //给sort-btn绑定一个点击事件，点击时触发btnHandle函数；
+       	  document.getElementById("sort_btn").onclick = function(){
+       	  	  btnHandle();  
+
+       	  };
+       }
+      //执行函数；
+      init();
+     </script> 
+  </body>
+</html>
