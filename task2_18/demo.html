@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>模拟队列</title>
+   <style>
+     .showWrap span{
+        display: inline-block;
+        width:50px;
+        height:50px;
+        margin:10px;
+        background-color: #FF0000;
+        color:#fff;
+        text-align: center;
+        line-height: 50px;
+     }
+   </style>
+ </head>
+ <body>
+   <div>
+     <input type="text" id="number"/>
+     <input type="button" id="rightIn" value="右侧入"/>
+     <input type="button" id="leftIn"  value="左侧入" />
+     <input type="button" id="leftOut"  value="左侧出" />
+     <input type="button" id="rightOut" value="右侧出" />
+   </div>
+   <div class="showWrap" id="showWrap">
+   </div>
+   <script>
+   	  var arr=[];
+   	  var rightIn = document.getElementById("rightIn");
+   	  var leftIn = document.getElementById("leftIn");
+   	  var leftOut = document.getElementById("leftOut");
+   	  var rightOut = document.getElementById("rightOut");
+   	  var wrap = document.getElementById("showWrap");
+
+   	  /*
+   	  *渲染showWrap，把数组显示出来；
+   	  */
+   	  function showArr(){
+   	  	var text="";
+         // arr.forEach(function(cur){
+         //    text += "<span>"+ cur +"</span>";
+         // });
+         for(var i=0;i<arr.length;i++){
+         	text += "<span>" + arr[i] + "</span>";
+         }
+         wrap.innerHTML = text;
+   	  }
+
+    /*
+     *跨浏览器绑定事件；
+    */
+   	 function addEventHandler(ele,evt,handler){
+   	 	 if(ele.addEventListener){
+   	 	 	ele.addEventListener(evt,handler,false);
+   	 	 }else if(ele.attachEvent){
+   	 	 	ele.attachEvent("on"+evt,handler);
+   	 	 }else{
+   	 	 	ele["on"+evt] = handler;
+   	 	 }
+   	 }
+    
+    /*
+     *查找一个节点相对于兄弟节点的位置
+     */
+     function index(element){
+     	   var idx;
+           var parent = element.parentNode;
+           if(parent.firstChild == element){
+           	  return 0;
+           }else if(parent.lastChild == element){
+           	  return parent.childNodes.length-1;
+           }else{
+           	  var nodes = parent.childNodes;
+           	  var i;
+              for(i=0;i<nodes.length;i++){
+              	if(nodes[i].nodeName=="#text")
+              		continue;
+              	else if(nodes[i] == element){
+              		return i;
+              	}
+              }
+           }
+     }
+   	  /*
+       *初始化button的点击事件；
+   	  */
+   	 function init(){
+          addEventHandler(rightIn,'click',function(){
+          	var v = document.getElementById("number").value;
+          	 arr.push(v);
+          	 showArr();
+          });
+
+          addEventHandler(leftIn,'click',function(){
+          	var v = document.getElementById("number").value;
+          	 arr.unshift(v);
+          	 showArr();
+          });
+
+          addEventHandler(leftOut,'click',function(){
+          	alert(arr.shift());
+          	 showArr();
+          });
+
+          addEventHandler(rightOut,'click',function(){
+          	alert(arr.pop());
+          	 showArr();
+          });
+
+          //事件委托，点击span即删除该元素；
+          addEventHandler(wrap,'click',function(e){
+          	 //IE的DOM0级事件对象；
+          	  var e = e||window.event;
+          	  var target = e.target || e.srcElement;
+          	  if(target.nodeName=="SPAN"){
+          	  	  //找到当前节点的位置；
+          	  	   var idx = index(target);
+                   wrap.removeChild(target);
+                   arr.splice(idx,1);
+          	  }
+          })
+   	 }
+
+   	 init();
+   </script>
+ </body>
+</html>
