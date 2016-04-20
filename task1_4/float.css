@@ -1,0 +1,36 @@
+*{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	     box-sizing: border-box;
+}
+body{
+	font-size: 15px;
+}
+div{
+	padding:20px;
+	border:solid 1px #999;
+}
+img {
+	width:80px;
+	height:80px;
+}
+.container{
+	background-color: #eee;
+	/*position:relative;*/
+	overflow: auto;
+}
+.left{
+   float:left;
+	width:200px;
+}
+.content{
+	margin:0 160px 0 240px;
+    min-width: 100px;
+}
+.right{
+   float:right;
+   width:120px;
+}
+.left span {
+	float:right;
+}
