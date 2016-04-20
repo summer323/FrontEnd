@@ -1,0 +1,40 @@
+*{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	     box-sizing: border-box;
+}
+body{
+	font-size: 15px;
+}
+div{
+	padding:20px;
+	border:solid 1px #999;
+}
+
+img {
+	width:80px;
+	height:80px;
+}
+.container{
+	background-color: #eee;
+	position:relative;
+	overflow: auto;
+}
+.left,.right{
+	position: absolute;
+	top:20px;
+}
+.left{
+	width:200px;
+	left:20px;
+}
+.content{
+   margin:0px 160px 0px 240px;
+}
+.right{
+   right:20px;
+   width:120px;
+}
+.left span{
+     float:right;
+}
